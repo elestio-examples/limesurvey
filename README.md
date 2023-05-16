@@ -19,5 +19,5 @@ You can open LimeSurvey Admin here:
 You can open PHPMyAdmin here:
 
     URL: https://[CI_CD_DOMAIN]:8443
-    email: root
+    login: root
     password: [ADMIN_PASSWORD]
