@@ -3,8 +3,6 @@
 
 mkdir -p ./plugins
 mkdir -p ./upload
-mkdir -p ./limesurvey_data
 
-chown -R 1001:1001 ./plugins
-chown -R 1001:1001 ./upload
-chown -R 1001:1001 ./limesurvey_data
+chmod 777 ./plugins
+chmod 777 ./upload
