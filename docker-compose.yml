@@ -34,9 +34,9 @@ services:
       - LIME_DB_NAME=limesurvey
     volumes:
       - ./limesurvey_data:/var/www/app/upload/surveys
-      - ./plugins:/var/www/html/plugins
-      - ./upload:/var/www/html/upload
-      - ./config:/var/www/html/application/config
+      - ./plugins:/var/www/app/plugins
+      - ./upload:/var/www/app/upload
+      - ./config:/var/www/app/application/config
 
   # phpmyadmin
   phpmyadmin:

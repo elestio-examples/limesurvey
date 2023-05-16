@@ -12,7 +12,7 @@ Deploy LimeSurvey server with CI/CD on Elestio
 
 You can open LimeSurvey Admin here:
 
-    URL: https://[CI_CD_DOMAIN]
+    URL: https://[CI_CD_DOMAIN]/index.php?r=admin/authentication/sa/login
     email: [ADMIN_EMAIL]
     password: [ADMIN_PASSWORD]
 
