@@ -1,0 +1,53 @@
+version: '3.3'
+
+services:
+
+  # Database
+  database:
+    image: mysql:latest
+    restart: always
+    volumes:
+      - ./db_data:/var/lib/mysql
+    env_file:
+      - .env
+    ports:
+      - 172.17.0.1:3306:3306
+    environment:
+      MYSQL_DATABASE: limesurvey
+    command: '--default-authentication-plugin=mysql_native_password'
+
+  # LimeSurvey
+  limesurvey:
+    depends_on:
+      - database
+    image: owncloudops/limesurvey:${SOFTWARE_VERSION_TAG}
+    restart: always
+    ports:
+      - 172.17.0.1:8476:8080
+    env_file:
+      - .env
+    environment:
+      - LIME_DB_USERNAME=$MYSQL_USER
+      - LIME_DB_PASSWORD=$MYSQL_PASSWORD
+      - LIME_DB_HOST=database
+      - LIME_DB_PORT=3306
+      - LIME_DB_NAME=limesurvey
+    volumes:
+      - ./limesurvey_data:/var/www/app/upload/surveys
+      - ./plugins:/var/www/html/plugins
+      - ./upload:/var/www/html/upload
+      - ./config:/var/www/html/application/config
+
+  # phpmyadmin
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    depends_on:
+      - database
+    ports:
+      - 172.17.0.1:24975:80
+    env_file:
+      - .env
+    environment:
+      - PMA_HOST=database
+      - PMA_PORT=3306
