@@ -4,7 +4,7 @@ services:
 
   # Database
   database:
-    image: mysql:latest
+    image: elestio/mysql:8.0
     restart: always
     volumes:
       - ./db_data:/var/lib/mysql
@@ -38,7 +38,7 @@ services:
 
   # phpmyadmin
   phpmyadmin:
-    image: phpmyadmin
+    image: elestio/phpmyadmin
     restart: always
     depends_on:
       - database
